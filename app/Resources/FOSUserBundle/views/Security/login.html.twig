@@ -1,0 +1,18 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}
+
+
+<div class="login-page">
+    <div class="form">
+
+        <form class="login-form"  action="{{ path("fos_user_security_check") }}" method="post" autocomplete="off" >
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            <input type="text" placeholder="username"id="username" name="_username" autocomplete="off" value=""/>
+            <input type="password" placeholder="password"id="password" name="_password" autocomplete="off" required="required"/>
+            <button  type="submit" id="_submit" name="_submit" >login</button>
+            <p class="message">Not registered? <a href="register">Create an account</a></p>
+        </form>
+    </div>
+</div>
+{% endblock fos_user_content %}

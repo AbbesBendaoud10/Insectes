@@ -1,0 +1,50 @@
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+index_insectes:
+    path:     /insectes
+    defaults: { _controller: AcmeInsecteBundle:Insecte:index }
+
+
+
+add_amitie:
+    path:     /amitie/{id}
+    defaults: { _controller: AcmeInsecteBundle:Insecte:addFriendToInsect }
+remove_amitie:
+    path:     /noAmitie/{id}
+    defaults: { _controller: AcmeInsecteBundle:Insecte:removeFriend }
+get_friends:
+    path:     /friendsA
+    defaults: { _controller: AcmeInsecteBundle:Insecte:getFriends }
+
+profile:
+    path:     /profil
+    defaults: { _controller: AcmeInsecteBundle:Insecte:getProfile }
+profile2:
+    path:     /myprofil
+    defaults: { _controller: AcmeInsecteBundle:Insecte:getProfile2 }
+edit_profile:
+    path:     /editProfil/{id}
+    defaults: { _controller: AcmeInsecteBundle:Insecte:editProfile }
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
