@@ -28,12 +28,41 @@
 
 
     <div class="container text-center" style="margin-bottom: 20px">
+   <h1>Modification de Profil</h1>
+        <form class="login-form" {{ form_start(form) }}
 
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
+        {{ form_errors(form) }}
+
+        <td>{{ form_errors(form.username) }}</td>
+
+        <td>{{ form_widget(form.username, {'attr': {'placeholder': 'Username','label':'Username'}}) }}</td>
+        <br />
+        <td>{{ form_errors(form.email) }}</td>
+
+        <td>{{ form_widget(form.email, {'attr': {'placeholder': 'Email','label':'Email'}}) }}</td>
+        <br />
+        <td>{{ form_errors(form.age) }}</td>
+
+        <td>{{ form_widget(form.age, {'attr': {'placeholder': 'Age','label':'Email'}}) }}</td>
+        <br />
+
+        <td>{{ form_errors(form.race) }}</td>
+
+        <td>{{ form_widget(form.race, {'attr': {'placeholder': 'Race','label':'Email'}}) }}</td>
+        <br />
+
+        <td>{{ form_errors(form.nourriture) }}</td>
+
+        <td>{{ form_widget(form.nourriture, {'attr': {'placeholder': 'Nourriture','label':'Email'}}) }}</td>
+        <br />
+
+
+
         {{ form_end(form) }}
+
+
+
+        </form>
     </div>
-    <footer class="container-fluid text-center">
-        <p>Footer Text</p>
-    </footer>
+
 {% endblock %}

@@ -54,7 +54,7 @@
                             <table class="table table-user-information">
                                 <tbody>
                                 <tr>
-                                    <td>Department:</td>
+                                    <td>Nom:</td>
                                     <td>{{ insectes.username }}</td>
                                 </tr>
 
@@ -64,9 +64,22 @@
 
                                 </tbody>
                                 <tr>
-                                    <td>ddd</td>
-                                    <td>abbs</td>
+                                    <td>Email</td>
+                                    <td>{{ insectes.email }}</td>
                                 </tr>
+                                <tr>
+                                    <td>Age</td>
+                                    <td>{{ insectes.age }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Race</td>
+                                    <td>{{ insectes.race }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Nourrituure</td>
+                                    <td>{{ insectes.nourriture }}</td>
+                                </tr>
+
                             </table>
 
                             <a href="editProfil/{{ insectes.id }}" class="btn btn-primary">Modifier Profile</a>
@@ -74,18 +87,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel-footer">
-                    <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-                    <span class="pull-right">
-                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                        </span>
-                </div>
+
 
             </div>
         </div>
     </div>
-    <footer class="container-fluid text-center">
-        <p>Footer Text</p>
-    </footer>
+
 {% endblock %}

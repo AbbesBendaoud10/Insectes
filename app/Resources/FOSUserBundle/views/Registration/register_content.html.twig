@@ -5,14 +5,48 @@
 <div class="login-page">
     <div class="form">
         <form class="login-form" {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'login-form'}}) }}
-            {{ form_widget(form,{'attr':{'class':'form-row','placeholder': "Email"}})}}
+
+        {{ form_errors(form) }}
+
+        <td>{{ form_errors(form.username) }}</td>
+
+        <td>{{ form_widget(form.username, {'attr': {'placeholder': 'Username','label':'Username'}}) }}</td>
+        <br />
+        <td>{{ form_errors(form.email) }}</td>
+
+        <td>{{ form_widget(form.email, {'attr': {'placeholder': 'Email','label':'Email'}}) }}</td>
+        <br />
+        <td>{{ form_errors(form.age) }}</td>
+
+        <td>{{ form_widget(form.age, {'attr': {'placeholder': 'Age','label':'Email'}}) }}</td>
+        <br />
+
+        <td>{{ form_errors(form.race) }}</td>
+
+        <td>{{ form_widget(form.race, {'attr': {'placeholder': 'Race','label':'Email'}}) }}</td>
+        <br />
+
+        <td>{{ form_errors(form.nourriture) }}</td>
+
+        <td>{{ form_widget(form.nourriture, {'attr': {'placeholder': 'Nourriture','label':'Email'}}) }}</td>
+        <br />
+        <td>{{ form_errors(form.plainPassword.first) }}</td>
+
+        <td>{{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'Password','label':'username'}}) }}</td>
+        <br />
+        <td>{{ form_errors(form.plainPassword.second) }}</td>
+
+        <td>{{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'Confirm','label':'username'}}) }}</td>
+        <br/>
 
 
+        {{ form_rest(form) }}
 
 
             <button  type="submit" id="_submit"  value="{{ 'registration.submit'|trans }}"name="_submit" >S'inscrire</button>
         </form>
 
         {{ form_end(form) }}
+        <p class="message">Non connecté? <a href="login">Se connecter</a></p>
     </div>
 </div>

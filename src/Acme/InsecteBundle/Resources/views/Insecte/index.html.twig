@@ -24,47 +24,97 @@
     </div>
 </nav>
 <div class="container text-center">
-<h1>Liste des insectes</h1>
-<table border="2" class="table">
-    <tr>
-
-        <th>Username</th>
-        <th>Email</th>
-        <th>Action</th>
-
-    </tr>
-    {% for insecte in insectes  %}
-        {% if insecte.id!=user %}
-    <tr>
-
-        <td>{{ insecte.username }}</td>
-        <td>{{ insecte.email }}</td>
-
-{% set nbr=0%}
-
-{% for f in friends %}
-    {% if  f.id==insecte.id%}
-        {%  set nbr=nbr+1 %}
-    {% endif %}
-        {% endfor %}
-
-        {% if nbr==0   %}
-            <td>  <a href="amitie/{{ insecte.id }}" class="btn btn-danger">Add-Friend</a></td>
-        {% endif %}
-        {% if nbr>0   %}
-            <td>  <a href="noAmitie/{{ insecte.id }}" class="btn btn-primary">RemoveFriend</a></td>
-        {% endif %}
 
 
 
 
 
-    </tr>
-    {% endif %}
-    {% endfor %}
-</table>
+        <div id="top" class="row">
+            <div class="col-sm-3">
+                <h2>Liste des insectes</h2>
+            </div>
+            <div class="col-sm-6">
 
 
 
+            </div>
+
+        </div> <!-- /#top -->
+
+
+        <hr />
+        <div id="list" class="row">
+
+            <div class="table-responsive col-md-12">
+                <table class="table table-striped" cellspacing="0" cellpadding="0" border="2">
+                    <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th class="actions">Details</th>
+                        <th class="actions">Action</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for insecte in insectes  %}
+                        {% if insecte.id!=user %}
+                            <tr>
+
+                                <td>{{ insecte.username }}</td>
+                                <td>{{ insecte.email }}</td>
+                                <td><a href="details/{{ insecte.id }}" class="btn btn-warning ">Details</a></td></td>
+
+                                {% set nbr=0%}
+
+                                {% for f in friends %}
+                                    {% if  f.id==insecte.id%}
+                                        {%  set nbr=nbr+1 %}
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if nbr==0   %}
+                                    <td>  <a href="amitie/{{ insecte.id }}" class="btn btn-primary">Ajouter comme ami</a></td>
+                                {% endif %}
+                                {% if nbr>0   %}
+                                    <td>  <a href="noAmitie/{{ insecte.id }}" class="btn btn-danger">Supprimer ami</a></td>
+                                {% endif %}
+
+
+
+
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div> <!-- /#list -->
+
+        <!-- /#bottom -->
+    </div> <!-- /#main -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalLabel"></h4>
+                </div>
+                <div class="modal-body">
+                    Voulez vous vraiment supprimer?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Oui</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

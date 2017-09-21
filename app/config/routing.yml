@@ -3,11 +3,12 @@ fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-
+default_routee:
+    path:     /
+    defaults: { _controller: AcmeInsecteBundle:Insecte:index }
 index_insectes:
     path:     /insectes
     defaults: { _controller: AcmeInsecteBundle:Insecte:index }
-
 
 
 add_amitie:
@@ -19,6 +20,9 @@ remove_amitie:
 get_friends:
     path:     /friendsA
     defaults: { _controller: AcmeInsecteBundle:Insecte:getFriends }
+get_details:
+    path:     /details/{id}
+    defaults: { _controller: AcmeInsecteBundle:Insecte:getDetails }
 
 profile:
     path:     /profil

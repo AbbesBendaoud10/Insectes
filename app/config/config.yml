@@ -75,3 +75,6 @@ fos_user:
     from_email:
         address: "fahatabbes.bendaoud@esprit.tn"
         sender_name: "Demo"
+    registration:
+                form:
+                    type: Acme\InsecteBundle\Form\RegistrationFormType

@@ -23,6 +23,14 @@ class Insect extends BaseUser
      * @ORM\Column(type="integer")
      */
     protected $age;
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $race;
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $nourriture;
 
     /**
      * @ORM\ManyToMany(targetEntity="Insect")
@@ -168,6 +176,38 @@ class Insect extends BaseUser
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRace()
+    {
+        return $this->race;
+    }
+
+    /**
+     * @param mixed $race
+     */
+    public function setRace($race)
+    {
+        $this->race = $race;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNourriture()
+    {
+        return $this->nourriture;
+    }
+
+    /**
+     * @param mixed $nourriture
+     */
+    public function setNourriture($nourriture)
+    {
+        $this->nourriture = $nourriture;
     }
 
 

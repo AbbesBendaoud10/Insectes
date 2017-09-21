@@ -40,7 +40,11 @@ class InsecteController extends Controller
         ));
 
     }
+public function  redirectTologinAction()
+{
 
+    return $this->redirectToRoute('fos_user_security');
+}
     public function defaultAction()
     {
         return $this->redirectToRoute('redirected');
@@ -105,12 +109,16 @@ class InsecteController extends Controller
 
 
         $atrributes = array('class' => 'form-control' , 'style' => 'margin-bottom:10px');
-        $choices = array('Low' => 'Low', 'Normal' => 'Normal', 'High' => 'High');
+
         $form = $this->createFormBuilder($todo)
             ->add('username', TextType::class, array('attr' => $atrributes))
+            ->add('age', TextType::class, array('attr' => $atrributes))
+            ->add('race', TextType::class, array('attr' => $atrributes))
+            ->add('nourriture', TextType::class, array('attr' => $atrributes))
+            ->add('email', TextType::class, array('attr' => $atrributes))
 
 
-            ->add('save', SubmitType::class, array('label' => 'Update User', 'attr' => array('class' => 'btn btn-primary')))
+            ->add('save', SubmitType::class, array('label' => 'Modifier ', 'attr' => array('class' => 'btn btn-primary')))
             ->getForm();
 
         $form->handleRequest($request);
@@ -122,7 +130,7 @@ class InsecteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($todo);
             $em->flush();
-            $this->addFlash('notice', 'Todo updated');
+            $this->addFlash('notice', 'Profil modifié');
 
             return $this->redirectToRoute('profile2');
         }
@@ -210,53 +218,24 @@ class InsecteController extends Controller
 
     }
 
-    /**
-     * @Route("/todo/delete/{id}", name="todo_delete")
-     */
-    public function deleteAction($id)
+
+
+
+    public function getDetailsAction($id)
     {
-        $todo = $this->getDoctrine()
-            ->getRepository('AppBundle:Todo')
+        $id2 = $this->container->get('security.token_storage')->getToken()->getUser()->getId();
+        $insecte = $this->getDoctrine()
+            ->getRepository('AcmeInsecteBundle:Insect')
             ->find($id);
+        $friends = $this->getDoctrine()
+            ->getRepository('AcmeInsecteBundle:Insect')
+            ->findFriends($id2);
 
-        if (empty($todo)) {
-            $this->addFlash('error', 'Todo not found');
-
-            return $this->redirectToRoute('todo_list');
-        }
-
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($todo);
-        $em->flush();
-
-        $this->addFlash('notice', 'Todo removed');
-
-        return $this->redirectToRoute('todo_list');
-    }
-    public function newAnnounceAction(Request $request)
-    {
-
-
-        $announce = new Announce();
-        $form = $this->createForm('AnnounceBundle\Form\AnnounceType', $announce);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            // $file stores the uploaded PDF file
-
-            $em = $this->getDoctrine()->getManager();
-
-            $em->persist($announce);
-            $em->flush();
-
-            return $this->redirectToRoute('annonce');
-        }
-        return $this->render('ViewBundle:front:newAnnounce.html.twig', array(
-            'announce' => $announce,
-            'form' => $form->createView(),
+        return $this->render('AcmeInsecteBundle:Insecte:details.html.twig', array(
+            'insectes' => $insecte,
+             'friends' => $friends
         ));
-
-
     }
+
 
 }
